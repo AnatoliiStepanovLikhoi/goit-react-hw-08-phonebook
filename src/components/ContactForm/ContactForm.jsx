@@ -1,5 +1,5 @@
 import { capitalizeFirstLetters } from '../Utils/capitalizeFirstLetters';
-import { addContactAsyncThunk } from '../../redux/contactsOperations';
+import { addContactAsyncThunk } from '../../redux/contacts/contactsOperations';
 
 import { Form, Label, Input, AddContactButton } from './ContactForm.styled';
 

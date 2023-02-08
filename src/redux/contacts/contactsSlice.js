@@ -6,7 +6,7 @@ import {
   contactsAsyncThunk,
   deleteContactAsyncThunk,
   addContactAsyncThunk,
-} from 'redux/contactsOperations';
+} from 'redux/contacts/contactsOperations';
 
 const extraActions = [
   contactsAsyncThunk,

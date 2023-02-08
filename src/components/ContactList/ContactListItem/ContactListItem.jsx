@@ -10,7 +10,7 @@ import {
 } from './ContactListItem.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStatus } from 'redux/selectors';
-import { deleteContactAsyncThunk } from 'redux/contactsOperations';
+import { deleteContactAsyncThunk } from 'redux/contacts/contactsOperations';
 
 export function ContactListItem(props) {
   const state = useSelector(selectStatus);

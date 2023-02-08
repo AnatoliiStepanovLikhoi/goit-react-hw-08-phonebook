@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo } from 'react';
 
 import { selectContacts, selectFilter, selectStatus } from 'redux/selectors';
-import { contactsAsyncThunk } from 'redux/contactsOperations';
+import { contactsAsyncThunk } from 'redux/contacts/contactsOperations';
 
 export function ContactList() {
   const dispatch = useDispatch();

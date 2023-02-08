@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useMemo } from 'react';
-import { filterContact } from '../../redux/filterSlice';
+import { filterContact } from '../../redux/filter/filterSlice';
 import debounce from 'lodash.debounce';
 
 import { Label, Input } from '../ContactForm/ContactForm.styled';
