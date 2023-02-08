@@ -5,14 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
 
   box-shadow: rgb(182 182 182) 2px 10px 20px;
-  width: 600px;
-  margin: ${p => p.theme.space[4]};
+  width: 1200px;
   padding: ${p => p.theme.space[4]};
-  padding-top: 64px;
   text-align: center;
 
   margin-left: auto;
   margin-right: auto;
+  margin-top: 64px;
 `;
 
 export const MainTitle = styled.h1`

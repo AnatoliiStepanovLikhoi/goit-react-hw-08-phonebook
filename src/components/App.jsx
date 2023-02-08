@@ -10,12 +10,13 @@ import { Filter } from './Filter/Filter';
 
 import HomePage from 'pages/HomePage/HomePage';
 import Layout from './Layout/Layout';
+import Contacts from 'pages/Contacts/Contacts';
 
 // import { Modal } from './Modal/Modal';
 
 // import { capitalizeFirstLetters } from './Utils/capitalizeFirstLetters';
 
-import { Container, MainTitle, SecondaryTitle } from './App.styled';
+// import { Container, MainTitle, SecondaryTitle } from './App.styled';
 import { Home } from '@mui/icons-material';
 
 export const App = () => {
@@ -26,8 +27,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          {/* <Route path="contacts" element={<Contacts />}/>
-          <Route path="login" element={<Login />} />
+          <Route path="contacts" element={<Contacts />} />
+          {/* <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} /> */}
         </Route>
         {/* <Route path="*" element={<NoRoot/>} /> */}

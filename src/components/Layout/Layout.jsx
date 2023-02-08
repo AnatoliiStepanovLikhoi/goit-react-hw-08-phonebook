@@ -1,6 +1,11 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
 
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+
+import { Nav, NavList } from './Layout.styled';
+
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -15,7 +20,7 @@ export default function Layout() {
             fontSize="large"
             aria-label="home"
             color="contrastText"
-            sx={{ mr: 1 }}
+            sx={{ mr: 3 }}
           />
 
           <NavLink to="/">
@@ -24,16 +29,22 @@ export default function Layout() {
             </Typography>
           </NavLink>
 
-          <nav>
-            <ul>
+          <Nav>
+            <NavList>
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
                 <NavLink to="contacts">Contacts</NavLink>
               </li>
-            </ul>
-          </nav>
+            </NavList>
+          </Nav>
+
+          {/* {isLoggedIn ? */}
+          <UserMenu />
+          {/* : */}
+          <AuthNav />
+          {/* } */}
         </Toolbar>
       </AppBar>
 
