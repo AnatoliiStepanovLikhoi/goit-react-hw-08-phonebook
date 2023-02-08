@@ -1,18 +1,39 @@
-import React from 'react';
+// import React from 'react';
+
+import React, { useEffect, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+
+import HomePage from 'pages/HomePage/HomePage';
+import Layout from './Layout/Layout';
 
 // import { Modal } from './Modal/Modal';
 
 // import { capitalizeFirstLetters } from './Utils/capitalizeFirstLetters';
 
 import { Container, MainTitle, SecondaryTitle } from './App.styled';
+import { Home } from '@mui/icons-material';
 
 export const App = () => {
+  // const dispatch = useDispatch();
+
   return (
-    <Container>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          {/* <Route path="contacts" element={<Contacts />}/>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} /> */}
+        </Route>
+        {/* <Route path="*" element={<NoRoot/>} /> */}
+      </Routes>
+
+      {/* <Container> */}
       {/* <button type="button" onClick={this.toggleModal}>
           Open modal
         </button> */}
@@ -30,13 +51,14 @@ export const App = () => {
             </button>
           </Modal>
         )} */}
+      {/* 
+        <MainTitle>Phonebook</MainTitle>
+        <ContactForm />
 
-      <MainTitle>Phonebook</MainTitle>
-      <ContactForm />
-
-      <SecondaryTitle>Contacts</SecondaryTitle>
-      <Filter />
-      <ContactList />
-    </Container>
+        <SecondaryTitle>Contacts</SecondaryTitle>
+        <Filter />
+        <ContactList />
+      </Container> */}
+    </>
   );
 };

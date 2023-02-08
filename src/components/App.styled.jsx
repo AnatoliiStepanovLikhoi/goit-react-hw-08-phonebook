@@ -8,6 +8,7 @@ export const Container = styled.div`
   width: 600px;
   margin: ${p => p.theme.space[4]};
   padding: ${p => p.theme.space[4]};
+  padding-top: 64px;
   text-align: center;
 
   margin-left: auto;
