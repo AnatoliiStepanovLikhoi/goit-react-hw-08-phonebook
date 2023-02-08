@@ -4,13 +4,15 @@ import React, { useEffect, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+// import { ContactForm } from './ContactForm/ContactForm';
+// import { ContactList } from './ContactList/ContactList';
+// import { Filter } from './Filter/Filter';
 
 import HomePage from 'pages/HomePage/HomePage';
 import Layout from './Layout/Layout';
 import Contacts from 'pages/Contacts/Contacts';
+import Register from 'pages/Register/Register';
+import Login from 'pages/Login/Login';
 
 // import { Modal } from './Modal/Modal';
 
@@ -28,8 +30,8 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="contacts" element={<Contacts />} />
-          {/* <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} /> */}
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
         {/* <Route path="*" element={<NoRoot/>} /> */}
       </Routes>
