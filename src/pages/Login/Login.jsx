@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
+import { useAuth } from 'hooks/useAuth';
 
 // function Copyright(props) {
 //   return (
@@ -40,6 +41,9 @@ const theme = createTheme();
 
 export default function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isLoggedIn, isLoading } = useAuth();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -61,6 +65,13 @@ export default function Login() {
     //   password: data.get('password'),
     // });
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
+      return;
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
+import { useAuth } from 'hooks/useAuth';
 
 // function Copyright(props) {
 //   return (
@@ -40,6 +41,9 @@ const theme = createTheme();
 
 export default function Register() {
   const dispatch = useDispatch();
+
+  const { isLoggedIn, isLoading } = useAuth();
+  const navigate = useNavigate();
 
   // const [name, setName] = useState('');
   // const [email, setEmail] = useState('');
@@ -70,6 +74,13 @@ export default function Register() {
 
     event.currentTarget.reset();
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
+      return;
+    }
+  }, [navigate, isLoggedIn]);
 
   return (
     <ThemeProvider theme={theme}>
