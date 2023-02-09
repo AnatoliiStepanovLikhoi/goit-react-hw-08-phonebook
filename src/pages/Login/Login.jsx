@@ -13,6 +13,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn } from 'redux/auth/authOperations';
+
 // function Copyright(props) {
 //   return (
 //     <Typography
@@ -34,13 +39,27 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function Login() {
+  const dispatch = useDispatch();
+
   const handleSubmit = event => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const credentials = Object.fromEntries(data.entries());
+
+    // const credentials = { name, email, password };
+
+    // console.log(credentials);
+
+    dispatch(logIn(credentials));
+
+    event.currentTarget.reset();
+
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
   };
 
   return (

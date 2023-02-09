@@ -17,7 +17,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
-import { CleaningServices } from '@mui/icons-material';
 
 // function Copyright(props) {
 //   return (
@@ -42,37 +41,34 @@ const theme = createTheme();
 export default function Register() {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
-  const handleChangeName = e => {
-    setName(e.currentTarget.value);
-  };
+  // const handleChangeName = e => {
+  //   setName(e.currentTarget.value);
+  // };
 
-  const handleChangeEmail = e => {
-    setEmail(e.currentTarget.value);
-  };
+  // const handleChangeEmail = e => {
+  //   setEmail(e.currentTarget.value);
+  // };
 
-  const handleChangePassword = e => {
-    setPassword(e.currentTarget.value);
-  };
+  // const handleChangePassword = e => {
+  //   setPassword(e.currentTarget.value);
+  // };
 
   const handleSubmit = event => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // const credentials = Object.fromEntries(data.entries());
+    const data = new FormData(event.currentTarget);
+    const credentials = Object.fromEntries(data.entries());
 
-    const credentials = { name, email, password };
+    // const credentials = { name, email, password };
 
     console.log(credentials);
 
     dispatch(register(credentials));
 
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
+    event.currentTarget.reset();
   };
 
   return (
@@ -109,7 +105,7 @@ export default function Register() {
                   id="firstName"
                   label="User Name"
                   autoFocus
-                  onChange={handleChangeName}
+                  // onChange={handleChangeName}
                 />
               </Grid>
               {/* <Grid item xs={12} sm={6}>
@@ -130,7 +126,7 @@ export default function Register() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange={handleChangeEmail}
+                  // onChange={handleChangeEmail}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -142,7 +138,7 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  onChange={handleChangePassword}
+                  // onChange={handleChangePassword}
                 />
               </Grid>
               {/* <Grid item xs={12}>
