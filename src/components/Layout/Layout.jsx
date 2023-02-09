@@ -1,5 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
+import { useAuth } from 'hooks/useAuth';
 
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserMenu } from 'components/UserMenu/UserMenu';
@@ -12,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 export default function Layout() {
+  const { isLoggedIn } = useAuth();
+
   return (
     <>
       <AppBar position="fixed" color="primary">
@@ -40,11 +43,7 @@ export default function Layout() {
             </NavList>
           </Nav>
 
-          {/* {isLoggedIn ? */}
-          <UserMenu />
-          {/* : */}
-          <AuthNav />
-          {/* } */}
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </Toolbar>
       </AppBar>
 
