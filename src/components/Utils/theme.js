@@ -20,6 +20,10 @@ export const theme = createTheme(
         main: '#f44336',
         contrastText: '#fff',
       },
+      neutral: {
+        main: '#64748B',
+        contrastText: '#fff',
+      },
     },
 
     fontsSizes: {

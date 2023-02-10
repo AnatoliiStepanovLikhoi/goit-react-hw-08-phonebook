@@ -1,14 +1,14 @@
 import { WatchWrapper } from './Loader.styled';
 import { Watch } from 'react-loader-spinner';
 
-export function Loader() {
+export function Loader({ color }) {
   return (
     <WatchWrapper>
       <Watch
-        height="80"
-        width="80"
+        height="64"
+        width="64"
         radius="48"
-        color="lightgreen"
+        color={color}
         ariaLabel="watch-loading"
         wrapperStyle={{}}
         wrapperClassName=""

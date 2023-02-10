@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
+import { Loader } from 'components/Loader/Loader';
 
 // function Copyright(props) {
 //   return (
@@ -36,8 +37,6 @@ import { useAuth } from 'hooks/useAuth';
 //     </Typography>
 //   );
 // }
-
-const theme = createTheme();
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -83,43 +82,42 @@ export default function Register() {
   }, [navigate, isLoggedIn]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: '#1de9b6', color: '#000' }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Register
+        </Typography>
         <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          sx={{ mt: 3, color: 'secondary' }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="User Name"
-                  autoFocus
-                  // onChange={handleChangeName}
-                />
-              </Grid>
-              {/* <Grid item xs={12} sm={6}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="given-name"
+                name="name"
+                required
+                fullWidth
+                id="firstName"
+                label="User Name"
+                autoFocus
+                // onChange={handleChangeName}
+              />
+            </Grid>
+            {/* <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -129,30 +127,30 @@ export default function Register() {
                   autoComplete="family-name"
                 />
               </Grid> */}
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  // onChange={handleChangeEmail}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  // onChange={handleChangePassword}
-                />
-              </Grid>
-              {/* <Grid item xs={12}>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                // onChange={handleChangeEmail}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                // onChange={handleChangePassword}
+              />
+            </Grid>
+            {/* <Grid item xs={12}>
                 <FormControlLabel
                   control={
                     <Checkbox value="allowExtraEmails" color="primary" />
@@ -160,26 +158,30 @@ export default function Register() {
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid> */}
-            </Grid>
+          </Grid>
+          {isLoading ? (
+            <Loader color="#1de9b6"></Loader>
+          ) : (
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Register
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="login" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
+          )}
+
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link href="login" variant="body2" sx={{ color: '#000' }}>
+                Already have an account? Sign in
+              </Link>
             </Grid>
-          </Box>
+          </Grid>
         </Box>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
-      </Container>
-    </ThemeProvider>
+      </Box>
+      {/* <Copyright sx={{ mt: 5 }} /> */}
+    </Container>
   );
 }
