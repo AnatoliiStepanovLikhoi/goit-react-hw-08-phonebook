@@ -6,6 +6,7 @@ import {
   contactsAsyncThunk,
   deleteContactAsyncThunk,
   addContactAsyncThunk,
+  updateContactAsyncThunk,
 } from 'redux/contacts/contactsOperations';
 
 const extraActions = [
@@ -29,6 +30,12 @@ const deleteContactSuccessReducer = (state, { payload }) => {
   state.contacts.splice(index, 1);
 };
 
+const updateContactSuccessReducer = (state, { payload }) => {
+  state.contacts = state.contacts.map(contact =>
+    contact.id === payload.id ? payload : contact
+  );
+};
+
 const pendingReducer = state => {
   state.status = STATUS.loading;
 };
@@ -50,6 +57,7 @@ const contactsSlice = createSlice({
       .addCase(contactsAsyncThunk.fulfilled, fetchContactsSuccessReducer)
       .addCase(addContactAsyncThunk.fulfilled, addContactSuccessReducer)
       .addCase(deleteContactAsyncThunk.fulfilled, deleteContactSuccessReducer)
+      .addCase(updateContactAsyncThunk.fulfilled, updateContactSuccessReducer)
       .addMatcher(isAnyOf(...getActions('pending')), pendingReducer)
       .addMatcher(isAnyOf(...getActions('rejected')), rejectedReducer)
       .addMatcher(isAnyOf(...getActions('fulfilled')), fulfilledReducer),

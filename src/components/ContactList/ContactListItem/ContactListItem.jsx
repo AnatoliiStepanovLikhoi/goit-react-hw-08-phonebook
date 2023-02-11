@@ -18,7 +18,7 @@ export function ContactListItem(props) {
   const dispatch = useDispatch();
 
   const {
-    contactInfo: { name, phone, id },
+    contactInfo: { name, number, id },
     // onContactDelete,
   } = props;
 
@@ -33,7 +33,7 @@ export function ContactListItem(props) {
     <ListItem>
       <Icon />
       <ContactText>
-        {capitalName}: {phone}
+        {capitalName}: {number}
       </ContactText>
       <RemoveContactButton
         type="button"

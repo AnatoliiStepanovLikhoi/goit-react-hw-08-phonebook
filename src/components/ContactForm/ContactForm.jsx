@@ -42,7 +42,7 @@ export const ContactForm = () => {
 
     Notify.success('Contact added!');
 
-    dispatch(addContactAsyncThunk({ name: capitalName, phone: inputNumber }));
+    dispatch(addContactAsyncThunk({ name: capitalName, number: inputNumber }));
 
     // setName(inputName);
     // setNumber(inputNumber);
