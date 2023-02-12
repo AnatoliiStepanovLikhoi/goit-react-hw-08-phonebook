@@ -7,10 +7,15 @@ import {
   ListItem,
   ContactText,
   RemoveContactButton,
+  UpdateContactButton,
 } from './ContactListItem.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStatus } from 'redux/selectors';
-import { deleteContactAsyncThunk } from 'redux/contacts/contactsOperations';
+import {
+  deleteContactAsyncThunk,
+  updateContactAsyncThunk,
+} from 'redux/contacts/contactsOperations';
+import CustomizedDialogs from '../../UpdateDialog/UpdateDialog';
 
 export function ContactListItem(props) {
   const state = useSelector(selectStatus);
@@ -35,6 +40,7 @@ export function ContactListItem(props) {
       <ContactText>
         {capitalName}: {number}
       </ContactText>
+      <CustomizedDialogs name={capitalName} number={number} contactId={id} />
       <RemoveContactButton
         type="button"
         onClick={() => handleDelete(id)}
@@ -50,7 +56,7 @@ export function ContactListItem(props) {
 ContactListItem.propTypes = {
   contactInfo: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }),
 };

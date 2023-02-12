@@ -7,7 +7,7 @@ export const theme = createTheme(
       grey: '#bababa',
       bgGrey: '#f1f1f1',
       black: '#000000',
-      accentShadow: 'lightgreen',
+      accentShadow: '#1de9b6',
       lightRed: '#ff7777',
     },
 

@@ -69,7 +69,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/');
+      navigate('/contacts');
       return;
     }
   }, [isLoggedIn, navigate]);

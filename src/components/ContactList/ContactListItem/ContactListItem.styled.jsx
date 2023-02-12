@@ -11,6 +11,7 @@ export const ListItem = styled.li`
   grid-template-columns:
     ${p => p.theme.space[5]}
     1fr
+    ${p => p.theme.space[6]}
     ${p => p.theme.space[6]};
   grid-template-rows: ${p => p.theme.space[5]};
   grid-column-gap: ${p => p.theme.space[5]};
@@ -51,6 +52,31 @@ export const RemoveContactButton = styled.button`
   &:hover,
   :focus {
     background-color: ${p => p.theme.colors.lightRed};
+    border: 2px solid transparent;
+  }
+`;
+
+export const UpdateContactButton = styled.button`
+  min-width: 48px;
+  height: 24px;
+
+  padding: 2px 2px;
+
+  color: ${p => p.theme.colors.black};
+  background-color: ${p => p.theme.colors.bgGrey};
+
+  font-size: ${p => p.theme.fontsSizes.s}px;
+  font-weight: ${p => p.theme.fontWeights.semiBold};
+
+  border: 2px solid ${p => p.theme.colors.accentShadow};
+  border-radius: ${p => p.theme.radii.semiRound};
+
+  cursor: pointer;
+  transition: background-color 250ms ease-out 0s, border-color 250ms ease-out 0s;
+
+  &:hover,
+  :focus {
+    background-color: ${p => p.theme.colors.accentShadow};
     border: 2px solid transparent;
   }
 `;

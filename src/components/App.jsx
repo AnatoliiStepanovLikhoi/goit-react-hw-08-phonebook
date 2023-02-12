@@ -3,6 +3,7 @@
 import React, { useEffect, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { refreshUser } from '../redux/auth/authOperations';
 
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
@@ -19,10 +20,14 @@ import Login from 'pages/Login/Login';
 // import { capitalizeFirstLetters } from './Utils/capitalizeFirstLetters';
 
 // import { Container, MainTitle, SecondaryTitle } from './App.styled';
-import { Home } from '@mui/icons-material';
+// import { Home } from '@mui/icons-material';
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <>
