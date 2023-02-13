@@ -11,32 +11,14 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { Loader } from 'components/Loader/Loader';
-
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -44,30 +26,13 @@ export default function Register() {
   const { isLoggedIn, isLoading } = useAuth();
   const navigate = useNavigate();
 
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
-  // const handleChangeName = e => {
-  //   setName(e.currentTarget.value);
-  // };
-
-  // const handleChangeEmail = e => {
-  //   setEmail(e.currentTarget.value);
-  // };
-
-  // const handleChangePassword = e => {
-  //   setPassword(e.currentTarget.value);
-  // };
-
   const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const credentials = Object.fromEntries(data.entries());
 
     // const credentials = { name, email, password };
-
-    console.log(credentials);
+    // console.log(credentials);
 
     dispatch(register(credentials));
 
@@ -117,16 +82,6 @@ export default function Register() {
                 // onChange={handleChangeName}
               />
             </Grid>
-            {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid> */}
             <Grid item xs={12}>
               <TextField
                 required
@@ -181,7 +136,6 @@ export default function Register() {
           </Grid>
         </Box>
       </Box>
-      {/* <Copyright sx={{ mt: 5 }} /> */}
     </Container>
   );
 }

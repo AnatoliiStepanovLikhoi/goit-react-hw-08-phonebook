@@ -11,15 +11,18 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   error: null,
+  isRefreshing: false,
 };
 
 const handlePending = state => {
   state.isLoading = true;
+  state.isRefreshing = true;
 };
 
 const handleRejected = (state, action) => {
   state.error = action.payload;
   state.isLoading = false;
+  state.isRefreshing = false;
 };
 
 const authSlice = createSlice({
@@ -55,6 +58,7 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
         state.isLoading = false;
+        state.isRefreshing = false;
       })
       .addCase(logOut.rejected, handleRejected);
 
@@ -65,6 +69,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
+        state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, handleRejected);
   },

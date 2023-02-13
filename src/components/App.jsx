@@ -4,21 +4,22 @@ import React, { useEffect, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/authOperations';
+import { RestrictedRoute } from './Utils/RestrictedRoute';
+import { PrivateRoute } from './Utils/PrivateRoute';
 
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
 // import { Filter } from './Filter/Filter';
 
-import HomePage from 'pages/HomePage/HomePage';
 import Layout from './Layout/Layout';
-import Contacts from 'pages/Contacts/Contacts';
-import Register from 'pages/Register/Register';
-import Login from 'pages/Login/Login';
+import NoRoot from 'pages/NoRoot/NoRoot';
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const Contacts = lazy(() => import('pages/Contacts/Contacts'));
+const Register = lazy(() => import('pages/Register/Register'));
+const Login = lazy(() => import('pages/Login/Login'));
 
 // import { Modal } from './Modal/Modal';
-
 // import { capitalizeFirstLetters } from './Utils/capitalizeFirstLetters';
-
 // import { Container, MainTitle, SecondaryTitle } from './App.styled';
 // import { Home } from '@mui/icons-material';
 
@@ -34,11 +35,24 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="contacts" element={<Contacts />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route
+            path="contacts"
+            element={<PrivateRoute component={Contacts} redirectTo="/" />}
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute component={Login} redirectTo="/contacts" />
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute component={Register} redirectTo="/contacts" />
+            }
+          />
         </Route>
-        {/* <Route path="*" element={<NoRoot/>} /> */}
+        <Route path="*" element={<NoRoot />} />
       </Routes>
 
       {/* <Container> */}

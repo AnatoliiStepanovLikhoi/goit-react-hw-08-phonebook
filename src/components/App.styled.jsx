@@ -5,13 +5,13 @@ export const Container = styled.div`
   flex-direction: column;
 
   /* box-shadow: rgb(182 182 182) 2px 10px 20px; */
-  width: 1200px;
+  width: 100%;
   padding: ${p => p.theme.space[4]};
   text-align: center;
 
   margin-left: auto;
   margin-right: auto;
-  margin-top: 64px;
+  margin-top: ${p => p.theme.space[6]};
 `;
 
 export const MainTitle = styled.h1`
