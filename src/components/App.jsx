@@ -37,7 +37,7 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route
             path="contacts"
-            element={<PrivateRoute component={Contacts} redirectTo="/" />}
+            element={<PrivateRoute component={Contacts} redirectTo="/login" />}
           />
           <Route
             path="login"
