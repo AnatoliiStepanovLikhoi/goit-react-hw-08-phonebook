@@ -93,7 +93,7 @@ export default function Login() {
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
             label="Show Password"
-            onClick={togglePassword}
+            onChange={togglePassword}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
