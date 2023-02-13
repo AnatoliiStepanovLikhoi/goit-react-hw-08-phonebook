@@ -123,6 +123,7 @@ export default function Register() {
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
             label="Show Password"
+            checked={passwordShown}
             onChange={togglePassword}
           />
           {isLoading ? (
