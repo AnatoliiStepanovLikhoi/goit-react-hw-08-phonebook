@@ -11,34 +11,13 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { Loader } from 'components/Loader/Loader';
-
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-// const theme = createTheme();
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -53,18 +32,11 @@ export default function Login() {
     const credentials = Object.fromEntries(data.entries());
 
     // const credentials = { name, email, password };
-
     // console.log(credentials);
 
     dispatch(logIn(credentials));
 
     event.currentTarget.reset();
-
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
   };
 
   useEffect(() => {
@@ -75,7 +47,6 @@ export default function Login() {
   }, [isLoggedIn, navigate]);
 
   return (
-    // <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -144,8 +115,6 @@ export default function Login() {
           </Grid>
         </Box>
       </Box>
-      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
     </Container>
-    // </ThemeProvider>
   );
 }

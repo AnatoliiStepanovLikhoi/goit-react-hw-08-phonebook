@@ -7,13 +7,13 @@ import {
   ListItem,
   ContactText,
   RemoveContactButton,
-  UpdateContactButton,
+  // UpdateContactButton,
 } from './ContactListItem.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStatus } from 'redux/selectors';
 import {
   deleteContactAsyncThunk,
-  updateContactAsyncThunk,
+  // updateContactAsyncThunk,
 } from 'redux/contacts/contactsOperations';
 import CustomizedDialogs from '../../UpdateDialog/UpdateDialog';
 
