@@ -12,18 +12,20 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
 import { useAuth } from 'hooks/useAuth';
 import { Loader } from 'components/Loader/Loader';
+// import { Password } from '@mui/icons-material';
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { isLoggedIn, isLoading } = useAuth();
+  const [passwordShown, setPasswordShown] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -37,6 +39,10 @@ export default function Login() {
     dispatch(logIn(credentials));
 
     event.currentTarget.reset();
+  };
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
   useEffect(() => {
@@ -80,13 +86,19 @@ export default function Login() {
             fullWidth
             name="password"
             label="Password"
-            type="password"
+            type={passwordShown ? 'text' : 'password'}
             id="password"
             autoComplete="current-password"
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
+            label="Show Password"
+            onClick={togglePassword}
+          />
+          <FormControlLabel
+            control={<Checkbox value="remember" color="secondary" />}
             label="Remember me"
+            sx={{ ml: 4 }}
           />
           {isLoading ? (
             <Loader color="#1de9b6"></Loader>

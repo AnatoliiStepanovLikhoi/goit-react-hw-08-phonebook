@@ -9,8 +9,10 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
@@ -21,6 +23,8 @@ export default function Register() {
   const dispatch = useDispatch();
 
   const { isLoggedIn, isLoading } = useAuth();
+  const [passwordShown, setPasswordShown] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = event => {
@@ -34,6 +38,10 @@ export default function Register() {
     dispatch(register(credentials));
 
     event.currentTarget.reset();
+  };
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
   useEffect(() => {
@@ -96,12 +104,13 @@ export default function Register() {
                 fullWidth
                 name="password"
                 label="Password"
-                type="password"
+                type={passwordShown ? 'text' : 'password'}
                 id="password"
                 autoComplete="new-password"
                 // onChange={handleChangePassword}
               />
             </Grid>
+
             {/* <Grid item xs={12}>
                 <FormControlLabel
                   control={
@@ -111,6 +120,11 @@ export default function Register() {
                 />
               </Grid> */}
           </Grid>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="secondary" />}
+            label="Show Password"
+            onChange={togglePassword}
+          />
           {isLoading ? (
             <Loader color="#1de9b6"></Loader>
           ) : (
