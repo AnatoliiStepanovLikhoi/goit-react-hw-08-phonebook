@@ -15,6 +15,10 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 export default function Layout() {
   const { isLoggedIn } = useAuth();
 
+  let activeStyle = {
+    fontWeight: 700,
+  };
+
   return (
     <>
       <AppBar position="fixed" color="primary">
@@ -35,11 +39,23 @@ export default function Layout() {
           <Nav>
             <NavList>
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink
+                  to="/"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  Home
+                </NavLink>
               </li>
               {isLoggedIn && (
                 <li>
-                  <NavLink to="contacts">Contacts</NavLink>
+                  <NavLink
+                    to="contacts"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                  >
+                    Contacts
+                  </NavLink>
                 </li>
               )}
             </NavList>
